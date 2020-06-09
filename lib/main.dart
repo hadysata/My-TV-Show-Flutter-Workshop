@@ -80,6 +80,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    var _controller = TextEditingController();
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -91,6 +93,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.white,
         onPressed: () {
           loadShowData();
+          _controller.clear();
         },
         child: Icon(Icons.add),
       ),
@@ -107,6 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(
                 padding: EdgeInsets.all(20.0),
                 child: TextField(
+                  controller: _controller,
                   decoration: InputDecoration(
                     labelText: 'TV Show',
                     border: OutlineInputBorder(
