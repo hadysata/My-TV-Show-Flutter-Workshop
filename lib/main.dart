@@ -24,7 +24,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  List<Widget> movies = [];
+  List<Widget> tvShows = [];
   String showName;
   Widget favorateShow = Container();
 
@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
       print('Request failed with status: ${response.statusCode}.');
     }
 
-    movies.add(
+    tvShows.add(
       ListTile(
         leading: Image.network(imageUrl),
         subtitle: Text(
@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(showName),
         trailing: Text(rating),
         onLongPress: () {
-          setFavorateMovie(imageUrl: imageUrl);
+          setFavorateTvShow(imageUrl: imageUrl);
         },
       ),
     );
@@ -69,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
     setState(() {});
   }
 
-  void setFavorateMovie({String imageUrl}) {
+  void setFavorateTvShow({String imageUrl}) {
     favorateShow = CircleAvatar(
       key: UniqueKey(),
       backgroundImage: NetworkImage(imageUrl),
@@ -108,7 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 padding: EdgeInsets.all(20.0),
                 child: TextField(
                   decoration: InputDecoration(
-                    labelText: 'Movie',
+                    labelText: 'TV Show',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(9),
                     ),
@@ -123,7 +123,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   margin: EdgeInsets.all(8.0),
                   padding: EdgeInsets.all(8.0),
                   decoration: BoxDecoration(
-                    color: movies.isNotEmpty
+                    color: tvShows.isNotEmpty
                         ? Color(0xFF1c1c1e)
                         : Colors.transparent,
                     borderRadius: BorderRadius.all(
@@ -133,7 +133,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: SingleChildScrollView(
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
-                      children: movies, //movies
+                      children: tvShows.reversed.toList(), //TV Shows
                     ),
                   ),
                 ),
